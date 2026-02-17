@@ -64,6 +64,6 @@ public class Bicicleta {
     }
 
     public String mostrarInfo(){
-        return "Bicicleta [marca= " + marca + ", tipo= " + tipo + ", color= " + color + ", serial= " + serial + ", año= " + año + ", cedulaCliente= " + clienteCedula + "]";
+        return "Bicicleta [marca= " + marca + ", tipo= " + tipo + ", color= " + color + ", serial= " + serial + ", año= " + año + ", cedulaCliente= " + clienteCedula + "]\n";
     }
 }

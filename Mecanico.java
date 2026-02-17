@@ -44,6 +44,6 @@ public class Mecanico {
     }
 
     public String mostrarInfo(){
-        return "Mecanico [id= " + id + ", nombre= " + nombre + ", especialidad= " + especialidad + ", certificado= " + certificado + "]";
+        return "Mecanico [id= " + id + ", nombre= " + nombre + ", especialidad= " + especialidad + ", certificado= " + certificado + "]\n";
     }
 }

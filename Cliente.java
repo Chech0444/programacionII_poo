@@ -44,6 +44,6 @@ public class Cliente {
     }
 
     public String mostrarInfo(){
-        return "Cliente [nombre= " + nombre + ", cedula= " + cedula + ", telefono= " + telefono + ", direccion= " + direccion + "]";
+        return "Cliente [nombre= " + nombre + ", cedula= " + cedula + ", telefono= " + telefono + ", direccion= " + direccion + "]\n";
     }
 }
