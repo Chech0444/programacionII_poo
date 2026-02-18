@@ -15,11 +15,11 @@ public class Main {
         String nombreMecanico = "";
         Scanner sc = new Scanner(System.in);
 
-        Mecanico mecanicoUno = new Mecanico("1", "Jose", "Frenos", "#2025123");
+        Mecanico mecanicoUno = new Mecanico("1", "Jose", "Frenos", "#2025123",0);
         listaMecanicos.add(mecanicoUno);
-        Mecanico mecanicoDos = new Mecanico("2", "Stiven", "Suspension", "#2017234");
+        Mecanico mecanicoDos = new Mecanico("2", "Stiven", "Suspension", "#2017234",0);
         listaMecanicos.add(mecanicoDos);
-        Mecanico mecanicoTres = new Mecanico("3", "William", "Bicicletas electricas", "#1102553");
+        Mecanico mecanicoTres = new Mecanico("3", "William", "Bicicletas electricas", "#1102553", 0);
         listaMecanicos.add(mecanicoTres);
 
         while (true) {
@@ -38,6 +38,7 @@ public class Main {
             System.out.println("*   6. Listar servicios.");
             System.out.println("*   7. Consultar ordernes programadas por fecha.");
             System.out.println("*   8. Ver historial de servicios por serial.");
+            System.out.println("*   9. Mostrar ingresos de los mecanicos.");
             System.out.println("****************************************************************");
             
             System.out.print("\nOpcion: ");
@@ -114,7 +115,7 @@ public class Main {
                     break;
 
                 case 5:
-                    while (fechaBusqueda == null || fechaBusqueda == null) {
+                    while (fechaBusqueda == null || horaBusqueda == null) {
                         System.out.print("\nIngrese fecha del servicio (YYYY-MM-DD): ");
                         String fechaTexto = sc.nextLine();
 
@@ -137,6 +138,10 @@ public class Main {
                         break;
                     }
 
+                    System.out.print("Ingrese el costo del servicio: ");
+                    double costoServicio = sc.nextDouble();
+                    sc.nextLine();
+
                     System.out.print("\n* Mecanicos Disponibles: \n");
                     for(Mecanico m : listaMecanicos){
                         System.out.println(m.mostrarInfo());
@@ -145,7 +150,7 @@ public class Main {
                     System.out.print("Ingrese el id del mecanico a usar: ");
                     String idMecanico = sc.nextLine();
 
-                    if (existeMecanico(idMecanico)) {
+                    if (existeMecanico(idMecanico, costoServicio)) {
                         nombreMecanico = buscarMecanico(idMecanico);
                     } else {
                         System.out.println("\n* No existe el mecanico ingresado.");
@@ -160,9 +165,6 @@ public class Main {
 
                     System.out.print("Ingrese los trabajos realizados a la bicicleta: ");
                     String trabajosRea = sc.nextLine();
-
-                    System.out.print("Ingrese el costo del servicio: ");
-                    double costoServicio = sc.nextDouble();
 
                     Servicio servicio = new Servicio(fechaBusqueda, horaBusqueda, serialServicio, nombreMecanico, motivo, diagnostico, trabajosRea, costoServicio);
                     listaServicios.add(servicio);
@@ -206,6 +208,13 @@ public class Main {
                     servicios = false;
                     break;
 
+                case 9:
+                    System.out.println("\nEl ingreso de los mecanicos es el siguiente: \n");
+                    for (Mecanico m : listaMecanicos){
+                        System.out.println("Mecanico " + m.getNombre() + m.mostrarIngreso());
+                    }
+                    break;
+
                 default:
                     System.out.println("\n* Opción inválida.\n");
                     break;
@@ -231,9 +240,10 @@ public class Main {
         return false;
     }
 
-    public static boolean existeMecanico(String id){
+    public static boolean existeMecanico(String id, double costo){
         for (Mecanico m : listaMecanicos){
             if (m.getId().equals(id)) {
+                m.setIngreso(costo);
                 return true;
             }
         }

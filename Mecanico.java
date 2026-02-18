@@ -3,8 +3,9 @@ public class Mecanico {
     private String nombre;
     private String especialidad;
     private String certificado;
+    private double ingreso;
 
-    public Mecanico(String id, String nombre, String especialidad, String certificado){
+    public Mecanico(String id, String nombre, String especialidad, String certificado, double ingreso){
         this.id = id;
         this.nombre = nombre;
         this.especialidad = especialidad;
@@ -27,6 +28,10 @@ public class Mecanico {
         return certificado;
     }
 
+    public double getIngreso(){
+        return ingreso;
+    }
+
     public void setId(String id){
         this.id = id;
     }
@@ -43,7 +48,15 @@ public class Mecanico {
         this.certificado = certificado;
     }
 
+    public void setIngreso(double ingreso){
+        this.ingreso += ingreso;
+    }
+
     public String mostrarInfo(){
-        return "Mecanico [id= " + id + ", nombre= " + nombre + ", especialidad= " + especialidad + ", certificado= " + certificado + "]\n";
+        return "Mecanico [id= " + id + ", nombre= " + nombre + ", especialidad= " + especialidad + ", certificado= " + certificado + ", ingreso= " + ingreso + "]\n";
+    }
+
+    public String mostrarIngreso(){
+        return " Tiene un ingreso actualmente de: " + ingreso;
     }
 }
